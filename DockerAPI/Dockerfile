@@ -1,4 +1,6 @@
-FROM microsoft/dotnet:1.1.0-sdk-projectjson
+FROM microsoft/dotnet:1.1-sdk
+
+MAINTAINER Luis Becerril
 
 COPY . /app
 
