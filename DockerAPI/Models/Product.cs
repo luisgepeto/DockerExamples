@@ -1,9 +1,10 @@
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;namespace WebApplicationBasic.Models{
-
+using MongoDB.Bson.Serialization.Attributes;
+namespace DockerAPI.Models
+{
 public class Product
     {
-        public ObjectId Id { get; set; }
+        public ObjectId Id {get; set;}
         [BsonElement("ProductId")]
         public int ProductId { get; set; }
         [BsonElement("ProductName")]
