@@ -3,13 +3,13 @@ version: '3'
 services:
   api: 
     build:
-      context: ./DockerApi
+      context: ./DockerAPI
     ports:
       - "8080:5000"
     networks:
       - my-network
     container_name: api
-    
+
   mongodb:
     image: mongo
     networks:
