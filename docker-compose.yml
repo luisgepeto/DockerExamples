@@ -11,10 +11,10 @@ services:
     container_name: api
 
   mongodb:
-    image: mongo
+    image: mongo:3.4
     networks:
       - my-network
-    container_name: mongo
+    container_name: mongo    
 
 networks:
   my-network:
