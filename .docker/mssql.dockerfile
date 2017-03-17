@@ -1,0 +1,1 @@
+FROM microsoft/mssql-server-windows:vnext-ctp1.3

@@ -1,0 +1,14 @@
+[
+  {
+    "productId": 1,
+    "productName": "Milk",
+    "price": 40,
+    "category": "Dairy"
+  },
+  {
+    "productId": 2,
+    "productName": "Meat",
+    "price": 80,
+    "category": "Frozen"
+  }
+]
