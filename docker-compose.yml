@@ -1,21 +1,25 @@
-version: '3'
+version: '2'
 
 services:
-  api: 
+  mongo:
     build:
-      context: ./DockerAPI
-    ports:
-      - "8080:5000"
+      context: .docker/
+      dockerfile: mongo.dockerfile
+    networks:      
+      - mongo
+    container_name: mongo
+    
+  mongo-seed:
+    build:
+      context: .docker/
+      dockerfile: mongo-seed.dockerfile
+    depends_on:
+      - mongo
+    command: ["./wait-for-it.sh", "mongo:27017"]
     networks:
-      - my-network
-    container_name: api
+      - mongo
+    container_name: mongo-seed
 
-  mongodb:
-    image: mongo:3.4
-    networks:
-      - my-network
-    container_name: mongo    
-
-networks:
-  my-network:
+networks:  
+  mongo:
     driver: bridge
