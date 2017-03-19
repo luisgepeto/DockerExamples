@@ -7,6 +7,8 @@ services:
       dockerfile: mongo.dockerfile
     networks:      
       - mongo
+    ports:
+      - "27017:27017"
     container_name: mongo
     
   mongo-seed:
@@ -14,8 +16,7 @@ services:
       context: .docker/
       dockerfile: mongo-seed.dockerfile
     depends_on:
-      - mongo
-    command: ["./wait-for-it.sh", "mongo:27017"]
+      - mongo    
     networks:
       - mongo
     container_name: mongo-seed

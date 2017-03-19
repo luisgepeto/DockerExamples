@@ -1,0 +1,16 @@
+db = db.getSiblingDB('docker');
+var productsSeed = [
+  {
+    "productId": 1,
+    "productName": "Milk",
+    "price": 40,
+    "category": "Dairy"
+  },
+  {
+    "productId": 2,
+    "productName": "Meat",
+    "price": 80,
+    "category": "Frozen"
+  }
+];
+db.products.insert(productsSeed);
