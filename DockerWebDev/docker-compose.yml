@@ -2,18 +2,14 @@ version: '2'
 
 services:
   mongo:
-    build:
-      context: .docker/
-      dockerfile: mongo.dockerfile
+    image: luisgepeto/mongo
     networks:      
       - mongo
       - api    
     container_name: mongo
     
   mongo-seed:
-    build:
-      context: .docker/
-      dockerfile: mongo-seed.dockerfile
+    image: luisgepeto/mongo-seed      
     depends_on:
       - mongo    
     networks:
@@ -21,15 +17,22 @@ services:
     container_name: mongo-seed
   
   api:
-    build:
-      context: .
-      dockerfile: .docker/api.dockerfile
+    image: luisgepeto/api
     networks:
       - mongo
       - api
     ports:
-      - "8080:5000"
-    container_name: api
+      - "8080:5000"    
+    container_name: api  
+  
+  web:
+    build:
+      context: ./DockerWeb      
+    networks:
+      - api      
+    ports:
+      - "80:5000"    
+    container_name: web
 
 networks:  
   mongo:
