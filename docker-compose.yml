@@ -7,8 +7,7 @@ services:
       dockerfile: mongo.dockerfile
     networks:      
       - mongo
-    ports:
-      - "27017:27017"
+      - api    
     container_name: mongo
     
   mongo-seed:
@@ -20,7 +19,20 @@ services:
     networks:
       - mongo
     container_name: mongo-seed
+  
+  api:
+    build:
+      context: .
+      dockerfile: .docker/api.dockerfile
+    networks:
+      - mongo
+      - api
+    ports:
+      - "8080:5000"
+    container_name: api
 
 networks:  
   mongo:
+    driver: bridge
+  api:
     driver: bridge

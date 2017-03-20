@@ -10,41 +10,41 @@ namespace DockerAPI.Models
         public DbContext(DbContextConfiguration config)
         {
             var client = new MongoClient(config.ConnectionString);            
-            _db = client.GetDatabase("EmployeeDb");      
+            _db = client.GetDatabase("docker");      
         }
  
         public IEnumerable<Product> GetProducts()
         {
-            return _db.GetCollection<Product>("Products").AsQueryable();
+            return _db.GetCollection<Product>("products").AsQueryable();
         }
  
  
         public Product GetProduct(int productId)
         {
-            var filter = Builders<Product>.Filter.Eq("ProductId", productId);            
-            return _db.GetCollection<Product>("Products").Find(filter).FirstOrDefault();
+            var filter = Builders<Product>.Filter.Eq("productId", productId);            
+            return _db.GetCollection<Product>("products").Find(filter).FirstOrDefault();
         }
  
         public Product Create(Product p)
         {
-            _db.GetCollection<Product>("Products").InsertOne(p);
+            _db.GetCollection<Product>("products").InsertOne(p);
             return p;
         }
  
         public void Update(int productId,Product p)
         {
-            var filter = Builders<Product>.Filter.Eq("ProductId", productId);                        
+            var filter = Builders<Product>.Filter.Eq("productId", productId);                        
             var update = Builders<Product>.Update
-                                .Set("ProductId", p.ProductId)
-                                .Set("ProductName", p.ProductName)
-                                .Set("Price", p.Price)
-                                .Set("Category", p.Category);
-            _db.GetCollection<Product>("Products").UpdateOne(filter,update);
+                                .Set("productId", p.ProductId)
+                                .Set("productName", p.ProductName)
+                                .Set("price", p.Price)
+                                .Set("category", p.Category);
+            _db.GetCollection<Product>("products").UpdateOne(filter,update);
         }
         public void Remove(int productId)
         {
-            var filter = Builders<Product>.Filter.Eq("ProductId", productId);            
-            var operation = _db.GetCollection<Product>("Products").DeleteOne(filter);            
+            var filter = Builders<Product>.Filter.Eq("productId", productId);            
+            var operation = _db.GetCollection<Product>("products").DeleteOne(filter);            
         }
     }
 }

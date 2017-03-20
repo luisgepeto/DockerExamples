@@ -5,13 +5,13 @@ namespace DockerAPI.Models
 public class Product
     {
         public ObjectId Id {get; set;}
-        [BsonElement("ProductId")]
+        [BsonElement("productId")]
         public int ProductId { get; set; }
-        [BsonElement("ProductName")]
+        [BsonElement("productName")]
         public string ProductName { get; set; }
-        [BsonElement("Price")]
+        [BsonElement("price")]
         public int Price { get; set; }
-        [BsonElement("Category")]
+        [BsonElement("category")]
         public string Category { get; set; }
     }
 }

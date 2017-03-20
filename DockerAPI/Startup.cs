@@ -28,7 +28,7 @@ namespace DockerAPI
             {
                 return new DbContextConfiguration()
                 {                    
-                    ConnectionString = Configuration.GetConnectionString("EmployeeDb")
+                    ConnectionString = Configuration.GetConnectionString("DockerDb")
                 };
             });
             services.AddTransient<DbContext>();
