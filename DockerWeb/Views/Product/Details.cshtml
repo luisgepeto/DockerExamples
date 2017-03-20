@@ -1,0 +1,28 @@
+@model DockerWeb.Models.ProductViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="panel panel-default">
+  <div class="panel-heading">Product Details</div>
+  <div class="panel-body">
+      <div class="container">
+    <div class="row">
+        @Html.LabelFor(m => m.ProductId): @Html.DisplayFor(m => m.ProductId)
+        </div>
+    <div class="row">
+        @Html.LabelFor(m => m.ProductName): @Html.DisplayFor(m => m.ProductName)
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Price): @Html.DisplayFor(m => m.Price)
+        </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Category): @Html.DisplayFor(m => m.Category)
+        </div>
+        <div class="row">            
+            <a class="btn btn-success"asp-area="" asp-controller="Product" asp-action="Index">Back</a>
+        <a class="btn btn-primary"asp-area="" asp-controller="Product" asp-action="Edit" asp-route-id="@Model.ProductId">Edit</a>
+        <a class="btn btn-danger"asp-area="" asp-controller="Product" asp-action="Delete" asp-route-id="@Model.ProductId">Delete</a>
+        </div>
+       </div>
+  </div>
+</div>

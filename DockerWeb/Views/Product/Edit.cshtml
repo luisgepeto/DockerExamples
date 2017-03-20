@@ -1,0 +1,36 @@
+@model DockerWeb.Models.ProductViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="panel panel-default">
+  <div class="panel-heading">Product Edit</div>
+  <div class="panel-body">
+      @using (Html.BeginForm("Save", "Product", FormMethod.Post))
+{
+    <fieldset>
+      <div class="container">
+    <div class="row">
+        @Html.LabelFor(m => m.ProductId): @Html.DisplayFor(m => m.ProductId)
+        </div>
+    <div class="row">
+        @Html.LabelFor(m => m.ProductName): @Html.EditorFor(m => m.ProductName)
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Price): @Html.EditorFor(m => m.Price)
+        </div>
+    <div class="row">
+        @Html.LabelFor(m => m.Category): @Html.EditorFor(m => m.Category)
+        </div>
+        <div class="row">            
+        <input type="submit" class="btn btn-success"asp-area="" asp-controller="Product" asp-action="Save" value="Save"/>
+        <a class="btn btn-danger"asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.ProductId">Cancel</a>
+        </div>
+       </div>
+    </fieldset>
+}
+  </div>
+</div>
+
+
+    
+    
