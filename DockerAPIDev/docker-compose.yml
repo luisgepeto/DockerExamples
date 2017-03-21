@@ -7,7 +7,9 @@ services:
       dockerfile: mongo.dockerfile
     networks:      
       - mongo
-      - api    
+      - api       
+    env_file: 
+      - ./.docker/env/mongo.${APP_ENV}.env
     container_name: mongo
     
   mongo-seed:
@@ -18,6 +20,8 @@ services:
       - mongo    
     networks:
       - mongo
+    env_file: 
+      - ./.docker/env/mongo.${APP_ENV}.env
     container_name: mongo-seed
   
   api:
@@ -29,6 +33,8 @@ services:
       - api
     ports:
       - "8080:5000"    
+    env_file: 
+      - ./.docker/env/api.${APP_ENV}.env
     container_name: api
 
 networks:  
