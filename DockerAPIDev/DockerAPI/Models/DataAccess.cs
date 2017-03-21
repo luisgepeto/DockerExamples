@@ -28,8 +28,8 @@ namespace DockerAPI.Models
  
         public Product Create(Product p)
         {
-            var allProducts =_db.GetCollection<Product>("products").AsQueryable().Select(pr => pr.ProductId).OrderByDescending(pr => pr).FirstOrDefault();
-            p.ProductId+=1;
+            var lastProductId =GetProducts().Select(pr => pr.ProductId).OrderByDescending(pr => pr).FirstOrDefault();
+            p.ProductId=lastProductId+1;
             _db.GetCollection<Product>("products").InsertOne(p);
             return p;
         }
@@ -37,8 +37,7 @@ namespace DockerAPI.Models
         public void Update(int productId,Product p)
         {
             var filter = Builders<Product>.Filter.Eq("productId", productId);                        
-            var update = Builders<Product>.Update
-                                .Set("productId", p.ProductId)
+            var update = Builders<Product>.Update                                
                                 .Set("productName", p.ProductName)
                                 .Set("price", p.Price)
                                 .Set("category", p.Category);
