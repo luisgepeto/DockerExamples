@@ -32,6 +32,8 @@ services:
       - api      
     ports:
       - "80:5000"    
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
     container_name: web
 
 networks:  

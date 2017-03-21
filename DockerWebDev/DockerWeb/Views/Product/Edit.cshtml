@@ -23,7 +23,12 @@
         </div>
         <div class="row">            
         <input type="submit" class="btn btn-success"asp-area="" asp-controller="Product" asp-action="Save" value="Save"/>
-        <a class="btn btn-danger"asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.ProductId">Cancel</a>
+        @if(Model == null || Model.ProductId == 0){
+            <a class="btn btn-danger" asp-area="" asp-controller="Product" asp-action="Index">Cancel</a>    
+        }
+        else{
+            <a class="btn btn-danger" asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.ProductId">Cancel</a>
+        }        
         </div>
        </div>
     </fieldset>

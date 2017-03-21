@@ -26,7 +26,9 @@ namespace DockerWeb.Controllers
 
         public IActionResult Edit(int id)
         {
-            return View(_da.Get(id));
+            var product = _da.Get(id);
+            if(id == 0) product = new ProductViewModel();            
+            return View(product);
         }
 
         [HttpPost]

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using MongoDB.Driver;
+using System.Linq;
 
 namespace DockerAPI.Models
 {
@@ -27,6 +28,8 @@ namespace DockerAPI.Models
  
         public Product Create(Product p)
         {
+            var allProducts =_db.GetCollection<Product>("products").AsQueryable().Select(pr => pr.ProductId).OrderByDescending(pr => pr).FirstOrDefault();
+            p.ProductId+=1;
             _db.GetCollection<Product>("products").InsertOne(p);
             return p;
         }
