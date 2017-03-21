@@ -35,7 +35,7 @@ namespace DockerWeb.Models{
         public ProductViewModel Update(ProductViewModel product){
             var jsonString = JsonConvert.SerializeObject(product);
             var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json"); 
-            var response= _client.PutAsync("api/products", httpContent).Result;
+            var response= _client.PutAsync("api/products/"+product.ProductId, httpContent).Result;
             var result = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<ProductViewModel>(result);  
         }

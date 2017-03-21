@@ -11,6 +11,7 @@
       <div class="container">
     <div class="row">
         @Html.LabelFor(m => m.ProductId): @Html.DisplayFor(m => m.ProductId)
+        @Html.HiddenFor(m => m.ProductId)
         </div>
     <div class="row">
         @Html.LabelFor(m => m.ProductName): @Html.EditorFor(m => m.ProductName)

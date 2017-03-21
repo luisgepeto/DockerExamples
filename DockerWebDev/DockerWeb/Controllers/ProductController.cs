@@ -34,15 +34,16 @@ namespace DockerWeb.Controllers
         [HttpPost]
         public IActionResult Save(ProductViewModel product)
         {
-            if (product.ProductId == 0)
+            var productId = product.ProductId;
+            if (productId == 0)
             {
-                _da.Create(product);
+                productId = _da.Create(product).ProductId;
             }
             else
             {
                 _da.Update(product);
-            }
-            return RedirectToAction("Details", new { id = product.ProductId });
+            }            
+            return RedirectToAction("Details", new { id = productId });
         }
 
         public IActionResult Delete(int id)
