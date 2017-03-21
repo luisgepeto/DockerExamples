@@ -10,7 +10,7 @@ namespace DockerWeb.Models{
         public DataAccess(ApiConfiguration config)
         {
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("http://"+config.ApiUrl+":8080/");
+            _client.BaseAddress = new Uri(config.ApiUrl);
         }
         public List<ProductViewModel> Get(){
             var response = _client.GetAsync("api/products").Result;            

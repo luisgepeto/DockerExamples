@@ -20,9 +20,7 @@ services:
     image: luisgepeto/api
     networks:
       - mongo
-      - api
-    ports:
-      - "8080:5000"    
+      - api    
     container_name: api  
   
   web:
