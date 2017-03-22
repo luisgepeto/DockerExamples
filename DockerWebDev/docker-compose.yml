@@ -7,6 +7,8 @@ services:
       - mongo
       - api    
     container_name: mongo
+    env_file: 
+      - ./env/mongo.${APP_ENV}.env
     
   mongo-seed:
     image: luisgepeto/mongo-seed      
@@ -15,13 +17,17 @@ services:
     networks:
       - mongo
     container_name: mongo-seed
-  
+    env_file: 
+      - ./env/mongo.${APP_ENV}.env
+
   api:
     image: luisgepeto/api
     networks:
       - mongo
       - api    
-    container_name: api  
+    container_name: api.${APP_ENV}
+    env_file: 
+      - ./env/api.${APP_ENV}.env
   
   web:
     build:
@@ -29,10 +35,10 @@ services:
     networks:
       - api      
     ports:
-      - "80:5000"    
-    environment: 
-      - ASPNETCORE_ENVIRONMENT=Development
+      - "80:5000"
     container_name: web
+    env_file: 
+      - ./env/web.${APP_ENV}.env
 
 networks:  
   mongo:
